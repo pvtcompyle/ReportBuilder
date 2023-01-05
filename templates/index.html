@@ -1,0 +1,25 @@
+<form method="post">
+  <label for="headers">Select headers:</label><br>
+  {% for header in all_headers %}
+    <input type="checkbox" id="headers" name="headers" value="{{ header }}">{{ header }}<br>
+  {% endfor %}
+  <br>
+  <input type="submit" value="Submit">
+</form> 
+
+{% if data %}
+  <table>
+    <tr>
+      {% for header in headers %}
+        <th>{{ header }}</th>
+      {% endfor %}
+    </tr>
+    {% for row in data %}
+      <tr>
+        {% for header in headers %}
+          <td>{{ row[header] }}</td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </table>
+{% endif %}
